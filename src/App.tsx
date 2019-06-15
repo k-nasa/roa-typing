@@ -3,6 +3,7 @@ import "./App.css";
 
 enum Pages {
   Init,
+  GameStart,
   NotFound
 }
 
@@ -19,9 +20,21 @@ class App extends React.Component<{}, IState> {
   public render() {
     if (this.state.page === Pages.Init) {
       return (
-        <button onClick={this.handleLinkClick.bind(this, Pages.NotFound)}>
-          ゲームスタート
-        </button>
+        <div>
+          <h1>夢月ロアのタイピングなのだ！</h1>
+          <button onClick={this.handleLinkClick.bind(this, Pages.GameStart)}>
+            ゲームスタート
+          </button>
+        </div>
+      );
+    } else if (this.state.page === Pages.GameStart) {
+      return (
+        <div>
+          <p>ゲーム画面なのだ！</p>
+          <button onClick={this.handleLinkClick.bind(this, Pages.Init)}>
+            もどる
+          </button>
+        </div>
       );
     }
 
