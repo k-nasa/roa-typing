@@ -4,6 +4,11 @@ import './App.css';
 import logo from './logo.svg';
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {date: new Date()};
+  }
+
   public render() {
     return (
       <div className="App">
