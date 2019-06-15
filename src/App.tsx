@@ -1,19 +1,19 @@
-import * as React from 'react';
-import './App.css';
+import * as React from "react";
+import "./App.css";
 
-import logo from './logo.svg';
+import logo from "./logo.svg";
 
 enum Pages {
-  Init,
+  Init
 }
 
 interface IState {
-  page: Pages
+  page: Pages;
 }
 
 class App extends React.Component<{}, IState> {
-  public state: IState = { page: Pages.Init};
-  constructor(props: {}){
+  public state: IState = { page: Pages.Init };
+  constructor(props: {}) {
     super(props);
   }
 
@@ -27,15 +27,13 @@ class App extends React.Component<{}, IState> {
           </header>
           <p className="App-intro">
             To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+          </p>
         </div>
       );
-    } 
+    }
 
     // 該当ページなし
-    return (
-      <div>Sorry. Error</div>
-    )
+    return <div>Sorry. Error</div>;
   }
 }
 
