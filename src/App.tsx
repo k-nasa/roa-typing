@@ -1,10 +1,9 @@
 import * as React from "react";
 import "./App.css";
 
-import logo from "./logo.svg";
-
 enum Pages {
-  Init
+  Init,
+  NotFound
 }
 
 interface IState {
@@ -20,20 +19,19 @@ class App extends React.Component<{}, IState> {
   public render() {
     if (this.state.page === Pages.Init) {
       return (
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
-          <p className="App-intro">
-            To get started, edit <code>src/App.tsx</code> and save to reload.
-          </p>
-        </div>
+        <button onClick={this.handleLinkClick.bind(this, Pages.NotFound)}>
+          ゲームスタート
+        </button>
       );
     }
 
     // 該当ページなし
     return <div>Sorry. Error</div>;
+  }
+  private handleLinkClick(newPage: Pages): void {
+    this.setState(state => ({
+      page: newPage
+    }));
   }
 }
 
