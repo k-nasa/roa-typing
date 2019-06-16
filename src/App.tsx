@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./App.css";
+import Game from "./Game";
 
 enum Pages {
   Init,
@@ -30,10 +31,10 @@ class App extends React.Component<{}, IState> {
     } else if (this.state.page === Pages.GameStart) {
       return (
         <div>
-          <p>ゲーム画面なのだ！</p>
           <button onClick={this.handleLinkClick.bind(this, Pages.Init)}>
-            もどる
+            タイトルに戻る
           </button>
+          <Game />
         </div>
       );
     }
