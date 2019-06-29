@@ -35,8 +35,8 @@ const Game = () => {
   return (
     <div>
       <p>ゲーム画面なのだ</p>
-      <p>制限時間 : {"dummu"}</p>
-      <p>スコア: {"dummu"}</p>
+      <p>制限時間 : {"dummuy"}</p>
+      <p>スコア: {"dummuy"}</p>
       <GameInner gameState={gameState} />
     </div>
   );
