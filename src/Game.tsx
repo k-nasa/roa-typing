@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 
 enum GameState {
   Ready,
@@ -11,13 +12,40 @@ interface IState {
 }
 
 const Game = () => {
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeydown);
+  });
 
-  public render() {
-    return (
-      <div>
-        <p>ゲーム画面なのだ</p>
-      </div>
-    );
+  const handleKeydown = (event: KeyboardEvent) => {
+    // tslint:disable-next-line:no-console
+    console.log(event);
+
+    switch (gameState) {
+      case GameState.Ready:
+        if (event.key === "Enter") {
+          setGameState(GameState.InAction);
+        }
+        break;
+      case GameState.InAction:
+        if (event.key === "Escape") {
+          setGameState(GameState.Ready);
+        }
+        break;
+    }
+  };
+
+  const [gameState, setGameState] = useState<GameState>(GameState.Ready);
+
+  return (
+    <div>
+      <p>ゲーム画面なのだ</p>
+      <p>制限時間 : {"dummu"}</p>
+      <p>スコア: {"dummu"}</p>
+      <GameInner gameState={gameState} />
+    </div>
+  );
+};
+
 const GameInner = ({ gameState }: IState) => {
   if (gameState === GameState.Ready) {
     return <p>Enterキーを押してゲームスタート</p>;
@@ -30,4 +58,5 @@ const GameInner = ({ gameState }: IState) => {
     const check: never = gameState;
     return <p>error {check}</p>;
   }
-}
+};
+export default Game;
