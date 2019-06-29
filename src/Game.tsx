@@ -100,7 +100,6 @@ const GameMain = () => {
     <div>
       <p> {problem[indexProblem].show} </p>
       <p>
-        {" "}
         <span style={{ color: "red" }}>
           {problem[indexProblem].key.substring(0, indexChar)}
         </span>
