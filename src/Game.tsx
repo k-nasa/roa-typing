@@ -15,12 +15,9 @@ const Game = () => {
   });
 
   const handleKeydown = (event: KeyboardEvent) => {
-    // tslint:disable-next-line:no-console
-    console.log(event);
-
     switch (gameState) {
       case GameState.Ready:
-        if (event.key === "Enter") {
+        if (event.key === " ") {
           setGameState(GameState.InAction);
         }
         break;
