@@ -10,8 +10,7 @@ interface IState {
   gameState: GameState;
 }
 
-export default class Game extends React.Component<{}, IState> {
-  public state: IState = { gameState: GameState.Ready };
+const Game = () => {
 
   public render() {
     return (
