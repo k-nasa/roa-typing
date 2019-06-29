@@ -7,10 +7,6 @@ enum GameState {
   Finish
 }
 
-interface IState {
-  gameState: GameState;
-}
-
 const Game = () => {
   useEffect(() => {
     window.addEventListener("keydown", handleKeydown);
@@ -45,8 +41,12 @@ const Game = () => {
     </div>
   );
 };
+interface IProps {
+  gameState: GameState;
+}
 
-const GameInner = ({ gameState }: IState) => {
+
+const GameInner = ({ gameState }: IProps) => {
   if (gameState === GameState.Ready) {
     return <p>Enterキーを押してゲームスタート</p>;
   } else if (gameState === GameState.InAction) {
