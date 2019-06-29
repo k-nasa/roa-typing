@@ -9,8 +9,10 @@ enum GameState {
 
 const Game = () => {
   useEffect(() => {
-    window.addEventListener("keydown", handleKeydown);
-  }, []);
+    addEventListener("keydown", handleKeydown);
+
+    return () => removeEventListener("keydown", handleKeydown);
+  });
 
   const handleKeydown = (event: KeyboardEvent) => {
     // tslint:disable-next-line:no-console
