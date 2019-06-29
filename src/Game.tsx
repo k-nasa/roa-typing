@@ -45,7 +45,6 @@ interface IProps {
   gameState: GameState;
 }
 
-
 const GameInner = ({ gameState }: IProps) => {
   if (gameState === GameState.Ready) {
     return <p>Enterキーを押してゲームスタート</p>;
