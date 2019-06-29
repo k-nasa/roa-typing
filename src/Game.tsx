@@ -10,7 +10,7 @@ enum GameState {
 const Game = () => {
   useEffect(() => {
     window.addEventListener("keydown", handleKeydown);
-  });
+  }, []);
 
   const handleKeydown = (event: KeyboardEvent) => {
     // tslint:disable-next-line:no-console
