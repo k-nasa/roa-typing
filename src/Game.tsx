@@ -36,7 +36,10 @@ const Game = () => {
       <p>ゲーム画面なのだ</p>
       <p>制限時間 : {"dummuy"}</p>
       <p>スコア: {"dummuy"}</p>
+
       <GameInner gameState={gameState} />
+
+      <p>やり直す(Escキー)</p>
     </div>
   );
 };
@@ -46,9 +49,9 @@ interface IProps {
 
 const GameInner = ({ gameState }: IProps) => {
   if (gameState === GameState.Ready) {
-    return <p>Enterキーを押してゲームスタート</p>;
+    return <p>スペースキーを押してゲームスタート</p>;
   } else if (gameState === GameState.InAction) {
-    return <p>game main</p>;
+    return <GameMain />;
   } else if (gameState === GameState.Finish) {
     return <p>result 画面表示</p>;
   } else {
@@ -58,3 +61,61 @@ const GameInner = ({ gameState }: IProps) => {
   }
 };
 export default Game;
+
+const GameMain = () => {
+  useEffect(() => {
+    addEventListener("keydown", handleKeydown);
+
+    return () => removeEventListener("keydown", handleKeydown);
+  });
+
+  const handleKeydown = (event: KeyboardEvent) => {
+    if (event.key === problem[indexProblem].key[indexChar]) {
+      nextChar();
+    }
+  };
+
+  const [indexProblem, setProblemsIndex] = useState(0);
+  const [indexChar, setCharIndex] = useState(0);
+
+  const nextProblem = () => {
+    if (problem.length - 1 < indexProblem + 1) {
+      setProblemsIndex(0);
+    } else {
+      setProblemsIndex(indexProblem + 1);
+    }
+    setCharIndex(0);
+  };
+  const nextChar = () => {
+    const nextCharIndex = indexChar + 1;
+
+    if (problem[indexProblem].key.length - 1 < nextCharIndex) {
+      nextProblem();
+    } else {
+      setCharIndex(nextCharIndex);
+    }
+  };
+
+  return (
+    <div>
+      <p> {problem[indexProblem].show} </p>
+      <p>
+        {" "}
+        <span style={{ color: "red" }}>
+          {problem[indexProblem].key.substring(0, indexChar)}
+        </span>
+        {problem[indexProblem].key.substring(
+          indexChar,
+          problem[indexProblem].key.length
+        )}
+      </p>
+    </div>
+  );
+};
+
+// あとから別ファイルに書き換える
+const problem = [
+  { show: "おわり〜", key: "owari~" },
+  { show: "hogehoge", key: "hogehoge" },
+  { show: "壺おじ", key: "tuboozi" }
+];
