@@ -20,11 +20,22 @@ class App extends React.Component<{}, IState> {
   public render() {
     if (this.state.page === Pages.Init) {
       return (
-        <div>
-          <h1>夢月ロアのタイピングなのだ！</h1>
-          <button onClick={this.handleLinkClick.bind(this, Pages.GameStart)}>
-            ゲームスタート
-          </button>
+        <div className="tile is-parent">
+          <article className="tile is-child notification is-danger">
+            <div className="main-flex-container">
+              <div className="sub-flex-container">
+                <h1 className="game-title">夢月ロアのタイピングゲームなのだ！</h1>
+                <button
+                  className="button is-medium"
+                  onClick={this.handleLinkClick.bind(this, Pages.GameStart)}
+                >
+                  スタートなのだ〜!!
+                </button>
+              </div>
+              <img src="https://wikiwiki.jp/nijisanji/?plugin=ref&page=%E5%A4%A2%E6%9C%88%E3%83%AD%E3%82%A2&src=roa.png&rev=d2cbddcc4631567f159815f92bbc5425" />
+            </div>
+            {/* TODO src差し替え */}
+          </article>
         </div>
       );
     } else if (this.state.page === Pages.GameStart) {
