@@ -24,7 +24,9 @@ class App extends React.Component<{}, IState> {
           <article className="tile is-child notification is-danger">
             <div className="main-flex-container">
               <div className="sub-flex-container">
-                <h1 className="game-title">夢月ロアのタイピングゲームなのだ！</h1>
+                <h1 className="game-title">
+                  夢月ロアのタイピングゲームなのだ！
+                </h1>
                 <button
                   className="button is-medium"
                   onClick={this.handleLinkClick.bind(this, Pages.GameStart)}
