@@ -95,6 +95,10 @@ const GameMain = () => {
   });
 
   const handleKeydown = (event: KeyboardEvent) => {
+    if (ignoreKeys.includes(event.key)) {
+      return;
+    }
+
     if (event.key === problem[indexProblem].key[indexChar]) {
       new Audio("audio/correct.mp3").play();
       nextChar();
@@ -144,3 +148,5 @@ const problem = [
   { show: "hogehoge", key: "hogehoge" },
   { show: "壺おじ", key: "tuboozi" }
 ];
+
+const ignoreKeys = ["Shift", "Escape", " ", "Enter"];
