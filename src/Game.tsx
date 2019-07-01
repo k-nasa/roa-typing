@@ -95,7 +95,10 @@ const GameMain = () => {
 
   const handleKeydown = (event: KeyboardEvent) => {
     if (event.key === problem[indexProblem].key[indexChar]) {
+      new Audio("audio/correct.mp3").play();
       nextChar();
+    } else {
+      new Audio("audio/incorrect.mp3").play();
     }
   };
 
