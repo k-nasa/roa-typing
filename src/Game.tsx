@@ -123,6 +123,7 @@ const GameMain = () => {
     const nextCharIndex = indexChar + 1;
 
     if (problem[indexProblem].key.length - 1 < nextCharIndex) {
+      new Audio(problem[indexProblem].sound).play()
       nextProblem();
     } else {
       setCharIndex(nextCharIndex);
