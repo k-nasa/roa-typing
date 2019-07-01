@@ -8,11 +8,31 @@ enum GameState {
 }
 
 const Game = () => {
+  const [time, setTime] = useState(60);
+  const [gameState, setGameState] = useState<GameState>(GameState.Ready);
+
   useEffect(() => {
     addEventListener("keydown", handleKeydown);
+    const id = setInterval(decrementCount, 1000);
 
-    return () => removeEventListener("keydown", handleKeydown);
+    return () => {
+      removeEventListener("keydown", handleKeydown);
+      clearInterval(id);
+    };
   });
+
+  const decrementCount = () => {
+    if (time === 0) {
+      setGameState(GameState.Finish);
+      return;
+    }
+
+    if (gameState !== GameState.InAction) {
+      return;
+    }
+
+    setTime(time - 1);
+  };
 
   const handleKeydown = (event: KeyboardEvent) => {
     switch (gameState) {
@@ -24,38 +44,42 @@ const Game = () => {
       case GameState.InAction:
         if (event.key === "Escape") {
           setGameState(GameState.Ready);
+          setTime(60);
         }
         break;
     }
   };
 
-  const [gameState, setGameState] = useState<GameState>(GameState.Ready);
-
   return (
-    <div>
-      <p>ゲーム画面なのだ</p>
-      <p>制限時間 : {"dummuy"}</p>
-      <p>スコア: {"dummuy"}</p>
+    <div className="game-content tile is-parent">
+      <article className="tile is-child notification is-danger">
+        <div className="main-flex-container">
+          <p>制限時間 : {time}s</p>
+          <p>スコア: {"dummuy"}</p>
+        </div>
 
-      <GameInner gameState={gameState} />
+        <div className="game-inner">
+          <GameInner gameState={gameState} />
+        </div>
 
-      <p>やり直す(Escキー)</p>
+        <p className="text-center">やり直す(Escキー)</p>
+      </article>
     </div>
   );
 };
+
 interface IProps {
   gameState: GameState;
 }
 
 const GameInner = ({ gameState }: IProps) => {
   if (gameState === GameState.Ready) {
-    return <p>スペースキーを押してゲームスタート</p>;
+    return <p className="text-center">スペースキーを押してゲームスタート</p>;
   } else if (gameState === GameState.InAction) {
     return <GameMain />;
   } else if (gameState === GameState.Finish) {
-    return <p>result 画面表示</p>;
+    return <p>おわり〜！！</p>;
   } else {
-    // tslint:disable-next-line:no-unused-variable
     const check: never = gameState;
     return <p>error {check}</p>;
   }
@@ -86,6 +110,7 @@ const GameMain = () => {
     }
     setCharIndex(0);
   };
+
   const nextChar = () => {
     const nextCharIndex = indexChar + 1;
 
@@ -97,10 +122,10 @@ const GameMain = () => {
   };
 
   return (
-    <div>
+    <div className="text-center tile is-child box">
       <p> {problem[indexProblem].show} </p>
       <p>
-        <span style={{ color: "red" }}>
+        <span style={{ color: "hsl(204, 86%, 53%)" }}>
           {problem[indexProblem].key.substring(0, indexChar)}
         </span>
         {problem[indexProblem].key.substring(

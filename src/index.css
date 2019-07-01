@@ -24,5 +24,21 @@ body {
 
 .button {
   border-radius: 20px;
+}
+
+.start-button {
   margin-top: 100px;
+}
+
+.game-content {
+  font-size: 40px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.game-inner {
+  width: 50%;
+  margin: 50px auto;
 }

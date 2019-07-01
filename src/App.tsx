@@ -28,7 +28,7 @@ class App extends React.Component<{}, IState> {
                   夢月ロアのタイピングゲームなのだ！
                 </h1>
                 <button
-                  className="button is-medium"
+                  className="button is-medium start-button"
                   onClick={this.handleLinkClick.bind(this, Pages.GameStart)}
                 >
                   スタートなのだ〜!!
@@ -43,10 +43,14 @@ class App extends React.Component<{}, IState> {
     } else if (this.state.page === Pages.GameStart) {
       return (
         <div>
-          <button onClick={this.handleLinkClick.bind(this, Pages.Init)}>
-            タイトルに戻る
-          </button>
           <Game />
+
+          <button
+            className="button"
+            onClick={this.handleLinkClick.bind(this, Pages.Init)}
+          >
+            ← タイトルに戻る
+          </button>
         </div>
       );
     }
