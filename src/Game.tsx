@@ -73,20 +73,21 @@ interface IProps {
 }
 
 const GameInner = ({ gameState }: IProps) => {
-  if (gameState === GameState.Ready) {
-    return <p className="text-center">スペースキーを押してゲームスタート</p>;
-  } else if (gameState === GameState.InAction) {
-    return <GameMain />;
-  } else if (gameState === GameState.Finish) {
-    return <p className="text-center">おわり〜！！</p>;
-  } else {
-    const check: never = gameState;
-    return <p>error {check}</p>;
+  switch (gameState) {
+    case GameState.Ready:
+      return <p className="text-center">スペースキーを押してゲームスタート</p>;
+    case GameState.InAction:
+      return <GameMain />;
+    case GameState.Finish:
+      return <p className="text-center">おわり〜！！</p>;
   }
 };
 export default Game;
 
 const GameMain = () => {
+  const [indexProblem, setProblemsIndex] = useState(0);
+  const [indexChar, setCharIndex] = useState(0);
+
   useEffect(() => {
     addEventListener("keydown", handleKeydown);
 
@@ -101,9 +102,6 @@ const GameMain = () => {
       new Audio("audio/incorrect.mp3").play();
     }
   };
-
-  const [indexProblem, setProblemsIndex] = useState(0);
-  const [indexChar, setCharIndex] = useState(0);
 
   const nextProblem = () => {
     if (problem.length - 1 < indexProblem + 1) {
