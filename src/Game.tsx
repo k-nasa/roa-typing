@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
+import problem from "./problems"
 
 enum GameState {
   Ready,
@@ -22,12 +23,14 @@ const Game = () => {
   });
 
   const decrementCount = () => {
-    if (time === 0) {
-      setGameState(GameState.Finish);
+    if (gameState !== GameState.InAction) {
       return;
     }
 
-    if (gameState !== GameState.InAction) {
+    if (time === 0) {
+      setGameState(GameState.Finish);
+      setTime(60);
+      new Audio("audio/thanks-owari.mp3").play()
       return;
     }
 
@@ -141,12 +144,5 @@ const GameMain = () => {
     </div>
   );
 };
-
-// あとから別ファイルに書き換える
-const problem = [
-  { show: "おわり〜", key: "owari~" },
-  { show: "hogehoge", key: "hogehoge" },
-  { show: "壺おじ", key: "tuboozi" }
-];
 
 const ignoreKeys = ["Shift", "Escape", " ", "Enter"];
