@@ -58,7 +58,7 @@ const Game = () => {
       <article className="tile is-child notification is-danger">
         <div className="main-flex-container">
           <p>制限時間 : {time}s</p>
-          <p>スコア: {"dummuy"}</p>
+          <p>スコア: {"後日追加..."}</p>
         </div>
 
         <div className="game-inner">
