@@ -41,7 +41,7 @@ const Game = () => {
           setGameState(GameState.InAction);
         }
         break;
-      case GameState.InAction:
+      default:
         if (event.key === "Escape") {
           setGameState(GameState.Ready);
           setTime(60);
@@ -78,7 +78,7 @@ const GameInner = ({ gameState }: IProps) => {
   } else if (gameState === GameState.InAction) {
     return <GameMain />;
   } else if (gameState === GameState.Finish) {
-    return <p>おわり〜！！</p>;
+    return <p className="text-center">おわり〜！！</p>;
   } else {
     const check: never = gameState;
     return <p>error {check}</p>;
