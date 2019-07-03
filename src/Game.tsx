@@ -103,10 +103,15 @@ const GameMain = () => {
     }
 
     if (event.key === problem[indexProblem].key[indexChar]) {
-      new Audio("audio/correct.mp3").play();
+      const audio = new Audio("audio/correct.mp3");
+      audio.volume = 0.2;
+      audio.play();
       nextChar();
     } else {
-      new Audio("audio/incorrect.mp3").play();
+      const audio = new Audio("audio/incorrect.mp3");
+
+      audio.volume = 0.2;
+      audio.play();
     }
   };
 
@@ -123,7 +128,7 @@ const GameMain = () => {
     const nextCharIndex = indexChar + 1;
 
     if (problem[indexProblem].key.length - 1 < nextCharIndex) {
-      new Audio(problem[indexProblem].sound).play()
+      new Audio(problem[indexProblem].sound).play();
       nextProblem();
     } else {
       setCharIndex(nextCharIndex);
