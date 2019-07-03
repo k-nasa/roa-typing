@@ -15,7 +15,7 @@
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
-    "fmt": "prettier --write ./src/**/*.tsx ./src/**/*.css"
+    "fmt": "prettier --write ./src/**/*.tsx ./src/**/*.css ./src/**/*.ts"
   },
   "devDependencies": {
     "@types/jest": "^24.0.14",
