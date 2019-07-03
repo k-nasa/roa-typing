@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
-import problem from "./problems"
+import problem from "./problems";
 
 enum GameState {
   Ready,
@@ -30,7 +30,7 @@ const Game = () => {
     if (time === 0) {
       setGameState(GameState.Finish);
       setTime(60);
-      new Audio("audio/thanks-owari.mp3").play()
+      new Audio("audio/thanks-owari.mp3").play();
       return;
     }
 
@@ -138,7 +138,7 @@ const GameMain = () => {
   return (
     <div className="text-center tile is-child box">
       <p> {problem[indexProblem].show} </p>
-      <p>
+      <p style={{ wordWrap: "break-word" }}>
         <span style={{ color: "hsl(204, 86%, 53%)" }}>
           {problem[indexProblem].key.substring(0, indexChar)}
         </span>
