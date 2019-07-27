@@ -8,6 +8,10 @@ enum GameState {
   Finish
 }
 
+const audioCorrect = new Audio("audio/correct.mp3");
+const audioIncorrect = new Audio("audio/incorrect.mp3");
+const autioThanks = new Audio("audio/thanks-owari.mp3");
+
 const Game = () => {
   const [time, setTime] = useState(60);
   const [gameState, setGameState] = useState<GameState>(GameState.Ready);
@@ -30,7 +34,7 @@ const Game = () => {
     if (time === 0) {
       setGameState(GameState.Finish);
       setTime(60);
-      new Audio("audio/thanks-owari.mp3").play();
+      autioThanks.play();
       return;
     }
 
@@ -103,13 +107,12 @@ const GameMain = () => {
     }
 
     if (event.key === problem[indexProblem].key[indexChar]) {
-      const audio = new Audio("audio/correct.mp3");
+      const audio = new Audio(audioCorrect.src)
       audio.volume = 0.2;
       audio.play();
       nextChar();
     } else {
-      const audio = new Audio("audio/incorrect.mp3");
-
+      const audio = new Audio(audioIncorrect.src)
       audio.volume = 0.2;
       audio.play();
     }
