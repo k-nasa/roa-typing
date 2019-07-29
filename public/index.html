@@ -13,11 +13,17 @@
   </head>
   <body>
     <div id="root"></div>
-    <audio id="bgm" src="audio/bgm.mp3" loop autoplay></audio>
   </body>
 </html>
 
 <script>
-  const audio = document.getElementById("bgm");
-  audio.volume = 0.1;
+  const audio = new Audio("audio/bgm.mp3")
+  audio.volume = 0.2;
+  audio.loop = true;
+
+  setTimeout(function(){
+    audio.play();
+  }, 1000);
+
+  console.log("遊んでくれてありがとうございます！")
 </script>
