@@ -107,14 +107,14 @@ const GameMain = () => {
     }
 
     if (event.key === problem[indexProblem].key[indexChar]) {
-      const audio = new Audio(audioCorrect.src)
-      audio.volume = 0.2;
-      audio.play();
+      audioCorrect.volume = 0.2;
+      audioCorrect.currentTime = 0;
+      audioCorrect.play();
       nextChar();
     } else {
-      const audio = new Audio(audioIncorrect.src)
-      audio.volume = 0.2;
-      audio.play();
+      audioIncorrect.volume = 0.2;
+      audioIncorrect.currentTime = 0;
+      audioIncorrect.play();
     }
   };
 
