@@ -8,9 +8,9 @@ enum GameState {
   Finish
 }
 
-const audioCorrect = new Audio("http://localhost:3000/audio/correct.mp3");
-const audioIncorrect = new Audio("http://localhost:3000/audio/incorrect.mp3");
-const autioThanks = new Audio("http://localhost:3000/audio/thanks-owari.mp3");
+const audioCorrect = new Audio("audio/correct.mp3");
+const audioIncorrect = new Audio("audio/incorrect.mp3");
+const autioThanks = new Audio("audio/thanks-owari.mp3");
 
 const Game = () => {
   const [time, setTime] = useState(60);
