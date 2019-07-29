@@ -20,7 +20,10 @@
   const audio = new Audio("audio/bgm.mp3")
   audio.volume = 0.2;
   audio.loop = true;
-  audio.play();
+
+  setTimeout(function(){
+    audio.play();
+  }, 1000);
 
   console.log("遊んでくれてありがとうございます！")
 </script>
