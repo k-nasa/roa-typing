@@ -94,9 +94,11 @@ export default Game;
 const GameMain = () => {
   const [indexProblem, setProblemsIndex] = useState(0);
   const [indexChar, setCharIndex] = useState(0);
+  const [voiceAudio, setVoiceAudio] = useState(new Audio());
 
   useEffect(() => {
     addEventListener("keydown", handleKeydown);
+    setVoiceAudio(new Audio(problem[indexProblem].sound))
 
     return () => removeEventListener("keydown", handleKeydown);
   });
@@ -119,10 +121,15 @@ const GameMain = () => {
   };
 
   const nextProblem = () => {
+      voiceAudio.play();
+
     if (problem.length - 1 < indexProblem + 1) {
       setProblemsIndex(0);
+      setVoiceAudio(new Audio(problem[indexProblem].sound));
     } else {
+      voiceAudio.play();
       setProblemsIndex(indexProblem + 1);
+      setVoiceAudio(new Audio(problem[indexProblem].sound));
     }
     setCharIndex(0);
   };
@@ -131,7 +138,6 @@ const GameMain = () => {
     const nextCharIndex = indexChar + 1;
 
     if (problem[indexProblem].key.length - 1 < nextCharIndex) {
-      new Audio(problem[indexProblem].sound).play();
       nextProblem();
     } else {
       setCharIndex(nextCharIndex);
