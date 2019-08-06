@@ -94,7 +94,9 @@ export default Game;
 const GameMain = () => {
   const [indexProblem, setProblemsIndex] = useState(0);
   const [indexChar, setCharIndex] = useState(0);
-  const [voiceAudio, setVoiceAudio] = useState(new Audio(problem[indexProblem].sound));
+  const [voiceAudio, setVoiceAudio] = useState(
+    new Audio(problem[indexProblem].sound)
+  );
 
   useEffect(() => {
     addEventListener("keydown", handleKeydown);
@@ -120,7 +122,7 @@ const GameMain = () => {
   };
 
   const nextProblem = () => {
-      voiceAudio.play();
+    voiceAudio.play();
 
     if (problem.length - 1 < indexProblem + 1) {
       setProblemsIndex(0);
